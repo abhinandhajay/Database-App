@@ -70,7 +70,7 @@ b4.grid(row = 5, column = 3)
 b5 = Button(window, text = "Delete Selected", width = 12)
 b5.grid(row = 6, column = 3)
 
-b6 = Button(window, text = "Close", width = 12)
+b6 = Button(window, text = "Close", width = 12, command = exit)
 b6.grid(row = 7, column = 3)
 
 window.mainloop()
