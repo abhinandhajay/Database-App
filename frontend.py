@@ -1,5 +1,7 @@
 from tkinter import *
-import backend
+from backend import Database
+
+database = Database()
 
 def get_selected_row(event):
     try:
@@ -16,29 +18,30 @@ def get_selected_row(event):
         e4.insert(END,selection[4])
     except IndexError:
         pass
+
 def view_command():
     list1.delete(0,END)
-    for row in backend.view():
+    for row in database.view():
         list1.insert(END,row)
 
 def search_command():
     list1.delete(0,END)
-    for row in backend.search(title_text.get(), author_text.get(), year_text.get(), isbn_text.get()):
+    for row in database.search(title_text.get(), author_text.get(), year_text.get(), isbn_text.get()):
         list1.insert(END,row)
 
 def insert_command():
     list1.delete(0,END)
-    backend.insert(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    database.insert(title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
     list1.insert(END,(title_text.get(), author_text.get(), year_text.get(), isbn_text.get()))
 
 def delete_command():
     list1.delete(0,END)
-    backend.delete(selection[0])
+    database.delete(selection[0])
     view_command()
 
 def update_command():
     list1.delete(0,END)
-    backend.update(selection[0],title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
+    database.update(selection[0],title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
     view_command()
 
 window = Tk()
