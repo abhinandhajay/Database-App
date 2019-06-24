@@ -45,4 +45,3 @@ def view():
     return rows
 
 connect()
-print(view())
